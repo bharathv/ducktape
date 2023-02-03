@@ -200,6 +200,7 @@ class TestRunner(object):
 
                 if self._expect_client_requests:
                     try:
+                        raise TimeoutError("runner client unresponsive")
                         event = self.receiver.recv(timeout=self.session_context.test_runner_timeout)
                         self._handle(event)
                     except Exception as e:
